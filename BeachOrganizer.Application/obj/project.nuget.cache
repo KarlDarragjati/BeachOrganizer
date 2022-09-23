@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "j7ZjHMQ54IYVFGi2WopJ1KdLONCuz6PW+eul6FgBgHGd7OSgBSRAUsaFB38d7UNcQVlspVYnCHLoTiQpaX2+tg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kdarragjati\\RiderProjects\\CleanArchitecture\\BeachOrganizer\\BeachOrganizer.Application\\BeachOrganizer.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kdarragjati\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

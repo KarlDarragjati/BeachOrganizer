@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeachOrganizer.Api", "BeachOrganizer.Api\BeachOrganizer.Api.csproj", "{51D89DC1-1ECB-4CE6-85AE-72BA855F4B68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeachOrganizer.Contracts", "BeachOrganizer.Contracts\BeachOrganizer.Contracts.csproj", "{DF32C49F-F953-4643-A1CC-C3E41BAE88C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeachOrganizer.Infrastructure", "BeachOrganizer.Infrastructure\BeachOrganizer.Infrastructure.csproj", "{60F56075-D2FA-4E77-9947-9189FDE0B241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeachOrganizer.Application", "BeachOrganizer.Application\BeachOrganizer.Application.csproj", "{3BE7CF56-6C69-4E1A-B972-5CD97308B40C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5F16DD7B-3B86-4915-991E-ED5E896EB1DF} = {5F16DD7B-3B86-4915-991E-ED5E896EB1DF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeachOrganizer.Domain", "BeachOrganizer.Domain\BeachOrganizer.Domain.csproj", "{5F16DD7B-3B86-4915-991E-ED5E896EB1DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51D89DC1-1ECB-4CE6-85AE-72BA855F4B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51D89DC1-1ECB-4CE6-85AE-72BA855F4B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51D89DC1-1ECB-4CE6-85AE-72BA855F4B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51D89DC1-1ECB-4CE6-85AE-72BA855F4B68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF32C49F-F953-4643-A1CC-C3E41BAE88C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF32C49F-F953-4643-A1CC-C3E41BAE88C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF32C49F-F953-4643-A1CC-C3E41BAE88C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF32C49F-F953-4643-A1CC-C3E41BAE88C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F56075-D2FA-4E77-9947-9189FDE0B241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F56075-D2FA-4E77-9947-9189FDE0B241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F56075-D2FA-4E77-9947-9189FDE0B241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F56075-D2FA-4E77-9947-9189FDE0B241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE7CF56-6C69-4E1A-B972-5CD97308B40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE7CF56-6C69-4E1A-B972-5CD97308B40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE7CF56-6C69-4E1A-B972-5CD97308B40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE7CF56-6C69-4E1A-B972-5CD97308B40C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F16DD7B-3B86-4915-991E-ED5E896EB1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F16DD7B-3B86-4915-991E-ED5E896EB1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F16DD7B-3B86-4915-991E-ED5E896EB1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F16DD7B-3B86-4915-991E-ED5E896EB1DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

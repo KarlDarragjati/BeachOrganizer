@@ -1,0 +1,15 @@
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\bin\Debug\net6.0\BeachOrganizer.Application.deps.json
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\bin\Debug\net6.0\BeachOrganizer.Application.dll
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\bin\Debug\net6.0\BeachOrganizer.Application.pdb
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.csproj.AssemblyReference.cache
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.AssemblyInfoInputs.cache
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.AssemblyInfo.cs
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.csproj.CoreCompileInputs.cache
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.dll
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\refint\BeachOrganizer.Application.dll
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.pdb
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\ref\BeachOrganizer.Application.dll
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\bin\Debug\net6.0\BeachOrganizer.Domain.dll
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\bin\Debug\net6.0\BeachOrganizer.Domain.pdb
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Application\obj\Debug\net6.0\BeachOrganizer.Application.csproj.CopyComplete
