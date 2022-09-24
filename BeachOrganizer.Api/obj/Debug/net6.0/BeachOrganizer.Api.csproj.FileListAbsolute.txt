@@ -33,3 +33,4 @@ C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganiz
 C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\kdarragjati\RiderProjects\CleanArchitecture\BeachOrganizer\BeachOrganizer.Api\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll

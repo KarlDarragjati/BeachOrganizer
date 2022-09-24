@@ -1,15 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>5704b661-fa21-45ee-811d-3c2a18cdd61f</UserSecretsId>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\BeachOrganizer.Application\BeachOrganizer.Application.csproj" />
-      <ProjectReference Include="..\BeachOrganizer.Infrastructure\BeachOrganizer.Infrastructure.csproj" />
-      <ProjectReference Include="..\BeachOrganizer.Contracts\BeachOrganizer.Contracts.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BeachOrganizer.Application\BeachOrganizer.Application.csproj" />
+    <ProjectReference Include="..\BeachOrganizer.Infrastructure\BeachOrganizer.Infrastructure.csproj" />
+    <ProjectReference Include="..\BeachOrganizer.Contracts\BeachOrganizer.Contracts.csproj" />
+  </ItemGroup>
 
 </Project>
