@@ -1,6 +1,9 @@
-﻿using BeachOrganizer.Application.Common.Interfaces.Authentication;
+﻿using BeachOrganizer.Application.Common.Errors;
+using BeachOrganizer.Application.Common.Interfaces.Authentication;
 using BeachOrganizer.Application.Common.Interfaces.Persistence;
 using BeachOrganizer.Domain.Entities;
+using FluentResults;
+using OneOf;
 
 namespace BeachOrganizer.Application.Services.Authentication;
 
@@ -15,12 +18,19 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+    public Result<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         // 1. Validate the user doesn't exist
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception("User with given email already exists.");
+            // Case with custom exception
+            //throw new DuplicateEmailException();
+            
+            // Case with errors and OneOf nuget package
+            //return new DuplicateEmailError()
+            
+            // Case with errors and FluentResults nuget package
+            return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
         }
         
         // 2. Create user (generate unique ID) & Persist to DB
@@ -39,7 +49,7 @@ public class AuthenticationService : IAuthenticationService
         
         var token = _jwtTokenGenerator.GenerateToken(user);
         
-        return new(
+        return new AuthenticationResult(
             user, 
             token);
     }

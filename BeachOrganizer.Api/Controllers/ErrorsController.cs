@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using BeachOrganizer.Application.Common.Errors;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BeachOrganizer.Api.Controllers;
@@ -9,6 +10,13 @@ public class ErrorsController : ControllerBase
     public IActionResult Error()
     {
         Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
-        return Problem(title: exception?.Message);
+
+        var (statusCode, message) = exception switch
+        {
+            IServiceException serviceException => ((int) serviceException.StatusCode, serviceException.ErrorMessage),
+            _ => (StatusCodes.Status500InternalServerError, exception?.Message)
+        };
+        
+        return Problem(statusCode: statusCode, title: message);
     }
 }
