@@ -1,9 +1,12 @@
 ﻿using BeachOrganizer.Application.Services.Authentication;
+using BeachOrganizer.Application.Services.Authentication.Commands.Register;
 using BeachOrganizer.Application.Services.Authentication.Common;
 using BeachOrganizer.Application.Services.Authentication.Queries;
+using BeachOrganizer.Application.Services.Authentication.Queries.Login;
 using BeachOrganizer.Contracts.Authentication;
 using BeachOrganizer.Domain.Common.Errors;
 using ErrorOr;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BeachOrganizer.Api.Controllers;
@@ -11,25 +14,22 @@ namespace BeachOrganizer.Api.Controllers;
 [Route("[controller]")]
 public class AuthenticationController : ApiController
 {
-    private readonly IAuthenticationCommandService _authenticationCommandService;
-    private readonly IAuthenticationQueryService _authenticationQueryService;
+    private readonly ISender _mediator;
 
-    public AuthenticationController(
-        IAuthenticationCommandService authenticationCommandService, 
-        IAuthenticationQueryService authenticationQueryService)
+    public AuthenticationController(ISender mediator)
     {
-        _authenticationCommandService = authenticationCommandService;
-        _authenticationQueryService = authenticationQueryService;
+        _mediator = mediator;
     }
-    
+
     [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
-        ErrorOr<AuthenticationResult> registerResult =_authenticationCommandService.Register(
-            request.FirstName, 
-            request.LastName, 
-            request.Email, 
+        var command = new RegisterCommand(
+            request.FirstName,
+            request.LastName,
+            request.Email,
             request.Password);
+        ErrorOr<AuthenticationResult> registerResult = await _mediator.Send(command);
 
         return registerResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
@@ -38,11 +38,12 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        ErrorOr<AuthenticationResult> loginResult =_authenticationQueryService.Login(
+        var query = new LoginQuery(
             request.Email, 
             request.Password);
+        ErrorOr<AuthenticationResult> loginResult = await _mediator.Send(query);
 
         if (loginResult.IsError && loginResult.FirstError == Errors.Authentication.InvalidCredentials)
         {
