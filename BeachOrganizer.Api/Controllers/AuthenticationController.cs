@@ -1,48 +1,31 @@
-﻿using BeachOrganizer.Application.Common.Errors;
-using BeachOrganizer.Application.Services.Authentication;
+﻿using BeachOrganizer.Application.Services.Authentication;
+using BeachOrganizer.Application.Services.Authentication.Common;
+using BeachOrganizer.Application.Services.Authentication.Queries;
 using BeachOrganizer.Contracts.Authentication;
-using FluentResults;
+using BeachOrganizer.Domain.Common.Errors;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
-using OneOf;
 
 namespace BeachOrganizer.Api.Controllers;
 
-[ApiController]
 [Route("[controller]")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : ApiController
 {
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IAuthenticationCommandService _authenticationCommandService;
+    private readonly IAuthenticationQueryService _authenticationQueryService;
 
-    public AuthenticationController(IAuthenticationService authenticationService)
+    public AuthenticationController(
+        IAuthenticationCommandService authenticationCommandService, 
+        IAuthenticationQueryService authenticationQueryService)
     {
-        _authenticationService = authenticationService;
+        _authenticationCommandService = authenticationCommandService;
+        _authenticationQueryService = authenticationQueryService;
     }
     
-    // Case with custom exception
-    /*[HttpPost("register")]
+    [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        var authResult =_authenticationService.Register(
-            request.FirstName, 
-            request.LastName, 
-            request.Email, 
-            request.Password);
-
-        var response = new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.User.Email,
-            authResult.Token);
-        
-        return Ok(response);
-    }*/
-    
-    // Case with errors and OneOf nuget package
-    /*[HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
-    {
-        OneOf<AuthenticationResult, IError> registerResult =_authenticationService.Register(
+        ErrorOr<AuthenticationResult> registerResult =_authenticationCommandService.Register(
             request.FirstName, 
             request.LastName, 
             request.Email, 
@@ -50,33 +33,28 @@ public class AuthenticationController : ControllerBase
 
         return registerResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
-            error => Problem(statusCode: (int) error.StatusCode, title: error.ErrorMessage)
+            errors => Problem(errors)
         );
-    }*/
-    
-    // Case with errors and FluentResults nuget package
-    [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    }
+
+    [HttpPost("login")]
+    public IActionResult Login(LoginRequest request)
     {
-        Result<AuthenticationResult> registerResult =_authenticationService.Register(
-            request.FirstName, 
-            request.LastName, 
+        ErrorOr<AuthenticationResult> loginResult =_authenticationQueryService.Login(
             request.Email, 
             request.Password);
 
-        if (registerResult.IsSuccess)
+        if (loginResult.IsError && loginResult.FirstError == Errors.Authentication.InvalidCredentials)
         {
-            return Ok(MapAuthResult(registerResult.Value));
-        }
-
-        var firstError = registerResult.Errors[0];
-
-        if (firstError is DuplicateEmailError)
-        {
-            return Problem(statusCode: StatusCodes.Status409Conflict, title: "");
+            return Problem(
+                statusCode: StatusCodes.Status401Unauthorized, 
+                title: loginResult.FirstError.Description);
         }
         
-        return Problem();
+        return loginResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors)
+        );
     }
 
     private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
@@ -88,22 +66,5 @@ public class AuthenticationController : ControllerBase
             authResult.User.Email,
             authResult.Token);
         return response;
-    }
-
-    [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
-    {
-        var authResult =_authenticationService.Login(
-            request.Email, 
-            request.Password);
-        
-        var response = new AuthenticationResponse(
-            authResult.User.Id,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.User.Email,
-            authResult.Token);
-        
-        return Ok(response);
     }
 }

@@ -118,17 +118,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "FluentResults": {
-              "target": "Package",
-              "version": "[3.13.0, )"
-            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[6.0.0, )"
-            },
-            "OneOf": {
-              "target": "Package",
-              "version": "[3.0.223, )"
             }
           },
           "imports": [
@@ -247,6 +239,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "ErrorOr": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

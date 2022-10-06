@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
+using BeachOrganizer.Api.Common.Http;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
-namespace BeachOrganizer.Api.Errors;
+namespace BeachOrganizer.Api.Common.Errors;
 
 public class BeachOrganizerProblemDetailsFactory : ProblemDetailsFactory
 {
@@ -86,9 +88,14 @@ public class BeachOrganizerProblemDetailsFactory : ProblemDetailsFactory
         }
 
         var traceId = Activity.Current?.Id ?? httpContext?.TraceIdentifier;
-        if (traceId != null)
+        if (traceId is not null)
         {
             problemDetails.Extensions["traceId"] = traceId;
+        }
+
+        if (httpContext?.Items[HttpContextItemKeys.Errors] is List<Error> errors)
+        {
+            problemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
         }
     }
 }
