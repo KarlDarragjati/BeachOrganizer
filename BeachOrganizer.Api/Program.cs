@@ -1,17 +1,13 @@
-using BeachOrganizer.Api.Common.Errors;
+using BeachOrganizer.Api;
 using BeachOrganizer.Application;
 using BeachOrganizer.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-    
-    builder.Services.AddControllers();
-
-    builder.Services.AddSingleton<ProblemDetailsFactory, BeachOrganizerProblemDetailsFactory>();
 }
 
 var app = builder.Build();
