@@ -6,10 +6,12 @@ using BeachOrganizer.Domain.Common.Errors;
 using ErrorOr;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BeachOrganizer.Api.Controllers;
 
+[AllowAnonymous]
 [Route("[controller]")]
 public class AuthenticationController : ApiController
 {
